@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bewerbungswebseite – Kontakt</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Kontakt</h1>
+  </header>
+
+  <nav class="nav">
+    <ul>
+      <li><a href="index.html">Start</a></li>
+      <li><a href="ueber-mich.html">Über Mich</a></li>
+      <li><a href="lebenslauf.html">Lebenslauf</a></li>
+      <li><a href="Dokumente.html">Dokumente</a></li>
+      <li><a class="current" href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-contact">
+    <h2>Schreiben Sie mir</h2>
+    <form>
+      <fieldset>
+        <legend><i class="fa-solid fa-envelope"></i> Kontaktformular</legend>
+
+        <label for="name"><i class="fa-solid fa-user"></i> Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email"><i class="fa-solid fa-at"></i> E-Mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message"><i class="fa-solid fa-comment"></i> Nachricht:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i> Absenden</button>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p><i class="fa-solid fa-envelope"></i> wasmut.erik@web.de <i class="fa-solid fa-phone"></i> +49 155 61554242 · <i class="fa-solid fa-location-dot"></i> 78727 Oberndorf a.N.</p>
+  </footer>
+</body>
+</html>

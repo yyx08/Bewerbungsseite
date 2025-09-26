@@ -1,0 +1,490 @@
+/* Farben & Basics */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap%27');
+:root {     /* ordnet dem :root-Element {HTML} der Webseite Eigenschaften zu */
+    --anthrazit: #2C2C2C;
+    --petrol: #2A7F7F;
+    --weiß: #FFFFFF;
+    --coral: #FF6B4A;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #fafafa;
+    color: #333;
+}
+
+/* Header & Navigation */
+
+.header {
+    text-align: center;
+    background: var(--anthrazit);
+    color: var(--weiß);
+    padding: 30px 20px;
+}
+
+.profilfoto {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transform: scale(1.3);  /*Vergrößert das Bild um 30%*/
+    border: 4px solid var(--petrol);
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #ddd;
+}
+
+.nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--anthrazit);
+}
+
+.nav ul li {
+    flex: 1;
+}
+
+.nav a {
+    display: block;
+    padding: 12px;
+    color: var(--weiß);
+    text-align: center;
+    text-decoration: none;
+}
+
+nav a.current,
+nav a:hover {
+    background: var(--petrol);
+}
+
+/* Grid Layout für die Hauptseiten */
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;  /* damit die Border nicht unendlich lang ist */
+    margin: 0 auto;     /* zentriert ihn */
+    width: 100vw;
+    margin: 0; 
+}
+
+
+.content {
+    background: var(--weiß);
+    border: 2px solid var(--petrol);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Skill: Karten mit Flip & Fade */
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 200px;
+    height: 110px;
+    perspective: 1000px;
+    outline: none;
+}
+
+/* Hinweis auf Interaktivität */
+.scrum-logo {
+    width: 50px; 
+    height: auto; 
+}
+
+.ms-office {
+    width: 50px; 
+    height: auto; 
+}
+
+.sql {
+    width: 50px; 
+    height: auto; 
+}
+
+
+.card-front .hint {
+    position: absolute;
+    bottom: 6px;
+    right: 8px;
+    font-size: 0.8em;
+    color: var(--petrol);
+    opacity: 0.6;
+}
+
+.card-front .hint i {
+    animation: pulse 2.5s infinite;
+}
+
+/* Mit @keyframes kannst du in CSS Animationen definieren
+Eine Animation ist im Grunde eine Abfolge von Zuständen (Farben,Position,Größe).
+*/
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Desktop: Flip und Rückseite */
+.card:hover .card-inner,
+.card-inner:focus {
+    transform: rotateY(180deg);
+}
+
+/*Vorder- und Rückseite*/
+.card-front, .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--anthrazit); /*var(--greift auf die Farben in Root zu)*/
+    border-radius: 6px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;    /*Safari/IOS Fix*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 0.95em;
+    text-align: center;
+}
+
+/*Vorderseite*/
+.card-front {
+    background-color: #f3f3f3;
+    font-weight: bold;
+    color: var(--anthrazit);
+}
+
+.card-front i {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: var(--petrol);
+}
+
+/*Rückseite*/
+.card-back {
+    background-color: var(--petrol);
+    color: var(--weiß);
+    transform: rotateY(180deg);
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.card-back ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 18px;
+}
+
+.card-back li {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-back li,
+.card-inner:focus .card-back li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-back li:nth-child(1) {
+    transition-delay: 0.5s;
+}
+
+.card-back li:nth-child(2) {
+    transition-delay: 0.7s;
+}
+
+.card-back li:nth-child(3) {
+    transition-delay: 0.8s;
+}
+
+/*Sidebar & Custom Listen*/
+
+.custom-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.custom-list li {
+    margin: 8px 0;
+}
+
+.custom-list a {
+    text-decoration: none;
+    color: var(--petrol);
+}
+
+.custom-list a i {
+    margin-right: 8px;
+}
+
+/* Über mich */
+.content-about {
+    background: var(--weiß);
+    padding: 20px;
+}
+.content-about h2 {
+    color: var(--petrol);
+    margin-top: 20px;
+}
+
+.content-about ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.content-about ul li span {
+    color: var(--petrol);
+    margin-right: 8px;
+}
+
+
+
+/*Timeline (Lebenslauf)*/
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #2A7F7F55;
+}
+
+/* Scrollbare Timeline */
+.scroll-container {
+    width: 500px;          /* Volle Breite */
+    max-height: 300px;    /* Maximale Höhe für die sichtbaren Punkte */
+    padding: 10px;
+    overflow-y: auto;     /* Vertikaler Scrollbalken bei Bedarf */
+    overflow-x: hidden;   /* Horizontaler Balken unterdrücken */
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 24px 0;
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: slideIn 0.8s forwards ease-out;
+}
+
+/*Für jeden neuen Punkt eures Lebenslaufes braucht ihr ein neues timeline-item:nth-child()
+Animation-delay immer verdoppeln (0.6s auf 1.2s)
+*/
+.timeline-item:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.timeline-point {
+    width: 20px;
+    height: 20px;
+    background-color: var(--coral);
+    border-radius: 50%;
+    margin-left: 20px;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 7px #2C2C2C55;
+}
+
+.timeline-content {
+    background-color: var(--weiß);
+    padding: 16px;
+    border: 2px solid var(--petrol);
+    border-radius: 6px;
+}
+
+.timeline-content h3 {
+    margin: 0 0 6px 0;
+    color: var(--petrol);
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*Dokumente*/
+
+.pics h2 {
+    color: var(--petrol);
+    margin-top: 20px;
+    padding: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+.pics {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.ksk {
+    border: 2px solid var(--petrol);
+    border-radius: 6px;
+    margin: 20px;
+    gap: 20px;
+}
+
+.exin {
+    margin: 20px;
+    border: 2px solid var(--petrol);
+    border-radius: 6px;
+}
+
+/* Kontaktformular */
+.content-contact {
+    background: var(--weiß);
+    padding: 20px;
+}
+
+form fieldset {
+    border: 2px solid var(--petrol);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+form legend {
+    font-weight: bold;
+    color: var(--petrol);
+    padding: 0 10px;
+}
+
+form label {
+    display: block;
+    font-weight: 500;
+    color: var(--petrol);
+    margin-top: 12px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-family: inherit;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus, form textarea:focus {
+    border-color: var(--petrol);
+    box-shadow: 0 0 5px var(--petrol);
+    outline: none;
+}
+
+form button {
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: var(--petrol);
+    color: var(--weiß);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 4px 0 0 #2b5f5f ;
+}
+
+form button:hover {
+    background-color: #306d6d;
+}
+
+/*Footer*/
+.footer {
+    text-align: center;
+    font-style: italic;
+    background-color: var(--anthrazit);
+    color: var(--weiß);
+    padding: 5px;
+    margin-top: 1px;
+}
+
+.footer i {
+    margin: 5px;
+    color: var(--petrol);
+}
+
+/*Responsive Design*/
+@media(max-width: 900px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav ul {
+        flex-direction: column;
+    }
+    .nav li {
+        flex: none;
+    }
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .timeline::before {
+        left: 20px;
+    }
+    .timeline-item {
+        flex-direction: column;
+        transform: translateY(20px);
+    }
+    .timeline-point {
+        margin: 0 0 10px 12px;
+    }
+}
+
+
+
+
